@@ -31,4 +31,14 @@ class Migration(migrations.Migration):
             name='priority',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='tasks.priority'),
         ),
+        migrations.AlterField(
+            model_name="task",
+            name="category",
+            field=models.ForeignKey(
+                default=0,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="task_manager.category"
+            ),
+            preserve_default=False,
+        ),
     ]
