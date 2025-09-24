@@ -8,12 +8,6 @@ class PriorityAdmin(admin.ModelAdmin):
     search_fields = ("name",)
 
 
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name",)
-    search_fields = ("name",)
-
-
 class SubTaskInline(admin.TabularInline):
     model = SubTask
     extra = 1
@@ -28,12 +22,19 @@ class NoteInline(admin.StackedInline):
     readonly_fields = ("created_at",)
 
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+
+
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     list_display = ("title", "status", "deadline", "priority", "category")
     list_filter = ("status", "priority", "category",)
     search_fields = ("title", "description",)
-    inlines = [SubTaskInline, NoteInline] # Edit related models directly on the Task admin page
+    
+    inlines = [SubTaskInline, NoteInline]
 
 
 @admin.register(SubTask)
