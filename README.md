@@ -51,9 +51,9 @@ With support for categories, subtasks, and notes, Hangarin is the perfect produc
     <td><img src="https://avatars.githubusercontent.com/u/144252928?v=4" width="150" style="border-radius:50%;" /></td>
     <td><pre>
   <b>Name</b>: John Brence S. Condesa 
-  <b>Email</b>: condesajohnbrence@gmail.com 
+  <b>Email</b>: condesajohnbrence@gmail.com
+
   <a href="https://facebook.com/"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Color/Facebook.png" width="25"/></a> <a href="https://github.com/n3mo1101"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Color/Github.png" width="25"></a>
-  <a href="https://facebook.com/"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Color/Facebook.png" width="25"/></a> <a href="https://github.com/Bitr3e"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Color/Github.png" width="25"></a>
     </pre></td>
   </tr>
 </table>
