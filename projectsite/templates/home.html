@@ -1,23 +1,69 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends "base.html" %}
 
 {% block content %}
-<div class="content">
-    <div class="container-fluid">
-        <h4 class="page-title">Home</h4>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Page Title</div>
-                        <div class="card-category">Page Subtitle</div>
-                    </div>
-                    <div class="card-body">
-                        Hello, World
+<div class="container mt-4">
+    <br>
+    <h2>Task List</h2>
+
+    <!-- Search and Add Task Row -->
+    <br />
+    <div class="col-md-12 row">
+        <div class="col-md-6">
+            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                <div class="input-group">
+                    <input type="text" placeholder="Search ..." class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="la la-search search-icon"></i>
+                        </span>
                     </div>
                 </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <a href="{% url 'task-add' %}" class="btn btn-success btn-rounded">
+                    Add Task
+                </a>
             </div>
         </div>
     </div>
+    <!-- End Row -->
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+            <tr>
+                <td>{{ object.title }}</td>
+                <td>{{ object.description }}</td>
+                <td>{{ object.deadline|date:"Y-m-d H:i" }}</td>
+                <td>{{ object.status }}</td>
+                <td>{{ object.category.name }}</td>
+                <td>{{ object.priority.name }}</td>
+                <td>
+                    <a href="task_list/{{ object.id }}">Edit</a>
+                    <a href="task_list/{{ object.id }}/delete" class="text-danger">Delete</a>
+                </td>
+
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7" class="text-center">No tasks found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% include "includes/pagination.html" with page_obj=page_obj paginator=paginator is_paginated=is_paginated object_list=tasks %}
 </div>
 {% endblock %}

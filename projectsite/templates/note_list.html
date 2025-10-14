@@ -4,14 +4,14 @@
 {% block content %}
 <div class="content">
   <div class="container-fluid">
-    <h4 class="page-title">TASKS</h4>
+    <h4 class="page-title">NOTES</h4>
 
     <br />
     <div class="col-md-12 row">
         <div class="col-md-6">
-            <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'task-list' %}">
+            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
                 <div class="input-group">
-                    <input type="text" placeholder="Search ..." class="form-control" name="q"/>
+                    <input type="text" placeholder="Search ..." class="form-control" />
                     <div class="input-group-append">
                         <span class="input-group-text">
                             <i class="la la-search search-icon"></i>
@@ -22,8 +22,8 @@
         </div>
         <div class="col-md-6">
             <div class="pull-right">
-                <a href="{% url 'task-add' %}" class="btn btn-success btn-rounded">
-                    Add Task
+                <a href="{% url 'note-add' %}" class="btn btn-success btn-rounded">
+                    Add Note
                 </a>
             </div>
         </div>
@@ -34,34 +34,28 @@
         <div class="card">
 
           <div class="card-header">
-            <div class="card-title">Tasks</div>
-            <div class="card-category">Enter your task here</div>
+            <div class="card-title">Notes</div>
+            <div class="card-category">Enter your note here</div>
           </div>
-        <div class="card-body">
+          <div class="card-body">
             <table class="table table-striped mt-3">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Deadline</th>
-                <th>Status</th>
-                <th>Category</th>
-                <th>Priority</th>
+                <th>Task</th>
+                <th>Content</th>
+                <th>Created at</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            {% for task in tasks %}
+            {% for object in object_list %}
             <tr>
-                <td>{{ task.title }}</td>
-                <td>{{ task.description }}</td>
-                <td>{{ task.deadline|date:"Y-m-d H:i" }}</td>
-                <td>{{ task.status }}</td>
-                <td>{{ task.category.name }}</td>
-                <td>{{ task.priority.name }}</td>
+                <td>{{ object.task }}</td>
+                <td>{{ object.content }}</td>
+                <td>{{ object.created_at|date:"Y-m-d H:i" }}</td>
                 <td>
-                    <a href="task_list/{{ task.id }}">Edit</a>
-                    <a href="task_list/{{ task.id }}/delete" class="text-danger">Delete</a>
+                    <a href="note_list/{{ object.id }}">Edit</a>
+                    <a href="note_list/{{ object.id }}/delete" class="text-danger">Delete</a>
                 </td>
 
             </tr>
