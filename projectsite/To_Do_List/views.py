@@ -5,26 +5,34 @@ from To_Do_List.forms import TaskForm, SubTaskForm, NoteTaskForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q 
+from django.utils import timezone
 
 
 # Create your views here.
 
 class HomePageView(ListView):
     model = Task
-    context_object_name = 'tasks'
-    template_name = 'task_list.html'
-    paginate_by = 5
+    context_object_name = 'home'
+    template_name = 'home.html'
 
-    def get_queryset(self):
-        qs = super().get_queryset()
-        query = self.request.GET.get('q')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["total_task"] = Task.objects.count()
+        context["total_subtask"] = SubTask.objects.count()
+        context["total_note"] = Note.objects.count()
 
-        if query:
-            qs = qs.filter(
-                Q(title__icontains=query) |
-                Q(description__icontains=query) 
-                )
-        return qs
+        today = timezone.now().date()
+        count = (
+            Task.objects
+            .filter(title=today.year)
+            .values("title")
+            .distinct()
+            .count()
+        )
+
+        context["Task_This_Month"] = count
+        return context
+
 
 class TaskListView(ListView):
     model = Task
@@ -66,6 +74,16 @@ class SubTaskListView(ListView):
     template_name = 'subtask_list.html'
     paginate_by = 5
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(title__icontains=query)
+                )
+        return qs
+
 class SubTaskCreateView(CreateView):
     model = SubTask
     form_class = SubTaskForm
@@ -88,6 +106,16 @@ class NoteListView(ListView):
     context_object_name = 'notes'
     template_name = 'note_list.html'
     paginate_by = 5
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(content__icontains=query)
+                )
+        return qs
 
 class NoteCreateView(CreateView):
     model = Note

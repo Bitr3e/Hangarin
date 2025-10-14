@@ -181,22 +181,29 @@
 				</div>
 				<ul class="nav">
 					<li class="nav-item active">
-						<a href="{% url 'task-list' %}">
+						<a href="{% url 'home' %}">
 							<i class="la la-dashboard"></i>
-							<p>Tasks</p>
+							<p>Dashboard</p>
 							<span class="badge badge-danger">10</span>
 						</a>
 					</li>12
 
 					<li class="nav-item">
-						<a href="{% url 'subtask-list' %}">
+						<a href="{% url 'task-list' %}">
 							<i class="la la-bar-chart"></i>
-							<p>Sub-Tasks</p>
+							<p>Tasks</p>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="{% url 'note-list' %}">
+						<a href="{% url 'subtask-list' %}">
 							<i class="la la-keyboard-o"></i>
+							<p>Sub-Tasks</p>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="{% url 'note-list' %}">
+							<i class="la la-th"></i>
 							<p>Notes</p>
 						</a>
 					</li>
