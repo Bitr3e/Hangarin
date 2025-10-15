@@ -4,12 +4,12 @@
 {% block content %}
 <div class="content">
   <div class="container-fluid">
-    <h4 class="page-title">NOTES</h4>
+    <h4 class="page-title">Priority</h4>
 
     <br />
     <div class="col-md-12 row">
         <div class="col-md-6">
-            <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'note-list' %}">
+            <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'priority-list' %}">
                 <div class="input-group">
                     <input type="text" placeholder="Search ..." class="form-control" name="q" />
                     <div class="input-group-append">
@@ -22,8 +22,8 @@
         </div>
         <div class="col-md-15">
             <div class="pull-right">
-                <a href="{% url 'note-add' %}" class="btn btn-success btn-rounded">
-                    Add Note
+                <a href="{% url 'priority-add' %}" class="btn btn-success btn-rounded">
+                    Add Priority
                 </a>
             </div>
         </div>
@@ -34,35 +34,30 @@
         <div class="card">
 
           <div class="card-header">
-            <div class="card-title">Notes</div>
-            <div class="card-category">Enter your note here</div>
+            <div class="card-title">Priority</div>
+            <div class="card-category">Enter your priority here</div>
           </div>
           <div class="card-body">
             <table class="table table-striped mt-3">
         <thead>
             <tr>
-                <th>Task</th>
-                <th>Content</th>
-                <th>Created at</th>
-                <th>Action</th>
+                <th>Name</th>
             </tr>
         </thead>
         <tbody>
             {% for object in object_list %}
             <tr>
-                <td>{{ object.task }}</td>
-                <td>{{ object.content }}</td>
-                <td>{{ object.created_at|date:"Y-m-d H:i" }}</td>
+                <td>{{ object.name }}</td>
                 <td>
-                    <a href="note_list/{{ object.id }}">Edit</a>
-                    <a href="note_list/{{ object.id }}/delete" class="text-danger">Delete</a>
+                    <a href="priority_list/{{ object.id }}">Edit</a>
+                    <a href="priority_list/{{ object.id }}/delete" class="text-danger">Delete</a>
                 </td>
 
             </tr>
                 {% empty %}
                   <tr>
                     <td colspan="5" class="text-center text-muted">
-                      No task found.
+                      No priority found.
                     </td>
                   </tr>
                 {% endfor %}
