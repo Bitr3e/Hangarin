@@ -67,7 +67,7 @@ ROOT_URLCONF = 'projectsite.urls'
 
 import os
 import socket 
-SITE_ID = 2     
+SITE_ID = 3    
 if "pythonanywhere" in socket.gethostname(): 
     SITE_ID = 4 
     SITE_ID = 3 
