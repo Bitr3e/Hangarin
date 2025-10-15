@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-pdcj&oig$t1%cy(1fhome=#3y3i*anr!z3py+o93!j3=fm-m&l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['brence.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['brence.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google', 
     'allauth.socialaccount.providers.github', 
 ]
-
-SITE_ID = 2 
  
 AUTHENTICATION_BACKENDS = [ 
     'django.contrib.auth.backends.ModelBackend',       
@@ -66,7 +64,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'projectsite.urls'
+
 import os
+import socket 
+SITE_ID = 2     
+if "pythonanywhere" in socket.gethostname(): 
+    SITE_ID = 4 
+    SITE_ID = 3 
 
 TEMPLATES = [
     {
