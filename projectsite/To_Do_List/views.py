@@ -39,6 +39,14 @@ class TaskListView(ListView):
     context_object_name = 'tasks'
     template_name = 'task_list.html'
     paginate_by = 5
+    ordering = ["title", "deadline", "priority"]
+
+    def get_ordering(self):
+        allowed = ["title", "deadline", "priority"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by 
+        return "title" 
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -74,6 +82,13 @@ class SubTaskListView(ListView):
     template_name = 'subtask_list.html'
     paginate_by = 5
 
+    def get_ordering(self):
+        allowed = ["title", "status"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by 
+        return "title" 
+
     def get_queryset(self):
         qs = super().get_queryset()
         query = self.request.GET.get('q')
@@ -106,6 +121,13 @@ class NoteListView(ListView):
     context_object_name = 'notes'
     template_name = 'note_list.html'
     paginate_by = 5
+
+    def get_ordering(self):
+        allowed = ["task", "created_at"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by 
+        return "task" 
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -140,6 +162,13 @@ class PriorityListView(ListView):
     template_name = 'priority_list.html'
     paginate_by = 5
 
+    def get_ordering(self):
+        allowed = ["name"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by 
+        return "name" 
+
     def get_queryset(self):
         qs = super().get_queryset()
         query = self.request.GET.get('q')
@@ -167,15 +196,18 @@ class PriorityDeleteView(DeleteView):
     template_name = 'priority_del.html'
     success_url = reverse_lazy('priority-list')
 
-
-
-
-
 class CategoryListView(ListView):
     model = Category
     context_object_name = 'categories'
     template_name = 'category_list.html'
     paginate_by = 5
+
+    def get_ordering(self):
+        allowed = ["name"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by 
+        return "name" 
 
     def get_queryset(self):
         qs = super().get_queryset()

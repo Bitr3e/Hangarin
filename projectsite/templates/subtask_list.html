@@ -28,6 +28,35 @@
             </div>
         </div>
     </div>
+
+    <div class="col-md-12">
+  <form method="get" class="row g-2 align-items-center">
+    <div class="col-auto">
+      <label for="smallSelect" class="col-form-label">Sort by</label>
+    </div>
+
+    <div class="col-auto">
+      <select class="form-control form-control-sm" id="smallSelect" name="sort_by">
+        <option value="title" 
+          {% if request.GET.sort_by == "title" %}selected{% endif %}>
+          Subtask title
+        </option>
+        <option value="status" 
+          {% if request.GET.sort_by == "status" %}selected{% endif %}>
+          Status
+        </option>
+
+      </select>
+    </div>
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary btn-sm btn-rounded">
+        Sort
+      </button>
+    </div>
+  </form>
+</div>
+    
 <br>
     <div class="row">
       <div class="col-md-12">
