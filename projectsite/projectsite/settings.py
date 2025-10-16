@@ -86,7 +86,7 @@ PWA_APP_ICONS = [
     }, 
     { 
         'src': '/static/img/icon.png', 
-        'sizes': '512x512',
+        'sizes': '192x192',
     } 
 ] 
 PWA_APP_ICONS_APPLE = [ 
@@ -96,7 +96,7 @@ PWA_APP_ICONS_APPLE = [
     }, 
     { 
         'src': '/static/img/icon.png', 
-        'sizes': '512x512',
+        'sizes': '192x192',
     } 
 ] 
 PWA_APP_DIR = 'ltr' 

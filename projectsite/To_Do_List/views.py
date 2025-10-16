@@ -6,11 +6,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q 
 from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
 
-class HomePageView(ListView):
+class HomePageView(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'home'
     template_name = 'home.html'
@@ -34,7 +35,7 @@ class HomePageView(ListView):
         return context
 
 
-class TaskListView(ListView):
+class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'
     template_name = 'task_list.html'
@@ -76,7 +77,7 @@ class TaskDeleteView(DeleteView):
     template_name = 'task_delete.html'
     success_url = reverse_lazy('task-list')
 
-class SubTaskListView(ListView):
+class SubTaskListView(LoginRequiredMixin, ListView):
     model = SubTask
     context_object_name = 'subtasks'
     template_name = 'subtask_list.html'
@@ -116,7 +117,7 @@ class SubTaskDeleteView(DeleteView):
     template_name = 'subtask_del.html'
     success_url = reverse_lazy('subtask-list')
 
-class NoteListView(ListView):
+class NoteListView(LoginRequiredMixin, ListView):
     model = Note
     context_object_name = 'notes'
     template_name = 'note_list.html'
@@ -156,7 +157,7 @@ class NoteDeleteView(DeleteView):
     template_name = 'note_del.html'
     success_url = reverse_lazy('note-list')
 
-class PriorityListView(ListView):
+class PriorityListView(LoginRequiredMixin, ListView):
     model = Priority
     context_object_name = 'priorities'
     template_name = 'priority_list.html'
@@ -196,7 +197,7 @@ class PriorityDeleteView(DeleteView):
     template_name = 'priority_del.html'
     success_url = reverse_lazy('priority-list')
 
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
     context_object_name = 'categories'
     template_name = 'category_list.html'
