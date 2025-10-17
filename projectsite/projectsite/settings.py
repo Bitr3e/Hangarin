@@ -47,6 +47,17 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github', 
     'pwa',
 ]
+
+import socket 
+if "pythonanywhere" in socket.gethostname(): 
+    SITE_ID = 6  # production site (brence.pythonanywhere.com) 
+else: 
+    SITE_ID = 5  # local site (127.0.0.1:8000) 
+ 
+AUTHENTICATION_BACKENDS = [ 
+    'django.contrib.auth.backends.ModelBackend',       
+    'allauth.account.auth_backends.AuthenticationBackend', 
+]
  
 AUTHENTICATION_BACKENDS = [ 
     'django.contrib.auth.backends.ModelBackend',       
@@ -67,7 +78,6 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'projectsite.urls'
 
 import os
-import socket 
 
 # --- Progressive Web App Settings --- 
 PWA_APP_NAME = 'ProjectSite' 
@@ -101,11 +111,6 @@ PWA_APP_ICONS_APPLE = [
 ] 
 PWA_APP_DIR = 'ltr' 
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js') 
-
-SITE_ID = 3    
-if "pythonanywhere" in socket.gethostname(): 
-    SITE_ID = 4 
-    SITE_ID = 3 
 
 TEMPLATES = [
     {
@@ -182,7 +187,7 @@ BASE_DIR / 'static',
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/accounts/login/'          
-LOGIN_REDIRECT_URL = '/'                
+LOGIN_REDIRECT_URL = '/'            
 # where @login_required will send users 
 # where to go after successful login 
 LOGOUT_REDIRECT_URL = '/accounts/login/'   # after logout, go back to login 
