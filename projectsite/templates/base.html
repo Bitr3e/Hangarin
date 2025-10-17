@@ -18,7 +18,7 @@
 <body>
 	<div class="wrapper bg-light">
 		<!-- HEADER -->
-		<div class="main-header" style="background-color:#2e7d32;">
+		<div class="main-header" style="background-color:#1b5e20;">
 			<div class="logo-header d-flex align-items-center justify-content-between px-3" style="background-color:#1b5e20; position: relative;">
   
   			<!-- Centered Logo -->
@@ -35,10 +35,7 @@
 				<span class="navbar-toggler-icon text-white"></span>
 				</button>
 
-				<!-- Logout Button -->
-				<a href="{% url 'account_logout' %}" class="btn btn-success btn-sm shadow-sm" data-toggle="modal" data-target="#logoutModal">
-                <i class="la la-sign-out"></i> Logout
-            </a>
+				
 			</div>
 
 			</div>
@@ -49,42 +46,26 @@
 					<form class="navbar-left navbar-form nav-search mr-md-3">
 						<div class="input-group">
 							<input type="text" placeholder="Search tasks..." class="form-control">
-							<div class="input-group-append">
-								<span class="input-group-text bg-success text-white">
-									<i class="la la-search"></i>
-								</span>
-							</div>
 						</div>
 					</form>
+					<div class="flex-grow-1 text-center">
+				<a href="{% url 'home' %}" class="logo text-white font-weight-bold text-decoration-none" style="font-size: 1.2rem;">
+				🌿 Hangarin Tasks
+				</a>
+			</div>
+
 					<ul class="navbar-nav ml-auto align-items-center">
-
-						<!-- Notifications -->
-						<li class="nav-item">
-							<a class="nav-link text-white" href="#"><i class="la la-bell"></i></a>
-						</li>
-
-						<!-- Profile Dropdown -->
-						<li class="nav-item dropdown mr-2">
-							<a class="dropdown-toggle profile-pic text-white" data-toggle="dropdown" href="#">
-								<img src="{% static 'img/profile3.jpg' %}" width="36" class="rounded-circle">
-								<span>{{ request.user.username }}</span>
-							</a>
-							<ul class="dropdown-menu dropdown-user">
-								<li>
-									<div class="user-box text-center">
-										<img src="{% static 'img/profile3.jpg' %}" alt="user" class="rounded-circle mb-2" width="70">
-										<h5>{{ request.user.username }}</h5>
-										<a href="#" class="btn btn-success btn-sm mt-2">View Profile</a>
-									</div>
-								</li>
-							</ul>
-						</li>
+	
 
 						<!-- Logout Dropdown Button -->
-						<li class="nav-item dropdown">
-							<a class="btn btn-outline-light dropdown-toggle" href="{% url 'account_logout' %}" id="logoutMenu" data-toggle="dropdown" aria-expanded="false">
-								<i class="la la-sign-out"></i> Logout
-							</a>
+							<br>
+							<br>
+							<br>
+							<!-- Logout Button -->
+							<a href="{% url 'account_logout' %}" class="btn btn-success btn-sm shadow-sm" data-toggle="modal" data-target="#logoutModal">
+							<i class="la la-sign-out"></i> Logout
+						</a>
+							 
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="logoutMenu">
 								<a class="dropdown-item text-danger" href="{% url 'account_logout' %}" data-toggle="modal" data-target="#logoutModal">
 									<i class="la la-power-off"></i> Confirm Logout
@@ -101,9 +82,14 @@
 		<div class="sidebar" style="background-color:#1b5e20;">
 			<div class="scrollbar-inner sidebar-wrapper">
 				<div class="user text-center py-4">
-					<img src="{% static 'img/profile3.jpg' %}" class="rounded-circle mb-2" width="70">
+					<img src="{% static 'img/profile3.jpg' %}" class="rounded-circle mb-2" width="100">
 					<h6 class="text-white mb-1">{{ request.user.username }}</h6>
 					<small class="text-success">Administrator</small>
+					<br>
+					<br>
+					<a href="{% url 'account_logout' %}" class="btn btn-success btn-sm shadow-sm" data-toggle="modal" data-target="#logoutModal">
+							<i class="la la-sign-out"></i> Logout
+						</a>
 				</div>
 
 				<ul class="nav flex-column mt-3">
