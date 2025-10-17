@@ -43,7 +43,7 @@ class TaskListView(LoginRequiredMixin, ListView):
     ordering = ["title", "deadline", "priority"]
 
     def get_ordering(self):
-        allowed = ["title", "deadline", "priority"]
+        allowed = ["title", "deadline", "priority", "status", "category"]
         sort_by = self.request.GET.get("sort_by")
         if sort_by in allowed:
             return sort_by 

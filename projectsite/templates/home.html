@@ -1,21 +1,29 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<div class="content">
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="content" style="background: linear-gradient(135deg, #e8f5e9, #f9fbe7); min-height: 100vh;">
     <div class="container-fluid">
-        <h4 class="page-title">Home</h4>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="page-title text-success font-weight-bold">
+                🌿 Home Dashboard
+            </h4>
+        </div>
+
+        <!-- Stats Row -->
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-stats card-success">
+                <div class="card shadow-sm border-0" style="background: #dcedc8; color: #2e7d32;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="la la-bar-chart"></i>
+                                <div class="icon-big text-center text-success">
+                                    <i class="la la-check-square la-3x"></i>
                                 </div>
                             </div>
                             <div class="col-7 d-flex align-items-center">
                                 <div class="numbers">
-                                    <p class="card-category">Task</p>
-                                    <h4 class="card-title">{{total_task}}</h4>
+                                    <p class="card-category">Tasks</p>
+                                    <h4 class="card-title font-weight-bold text-dark">{{ total_task }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -24,18 +32,18 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card card-stats card-danger">
+                <div class="card shadow-sm border-0" style="background: #fff9c4; color: #33691e;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="la la-newspaper-o"></i>
+                                <div class="icon-big text-center text-warning">
+                                    <i class="la la-list-alt la-3x"></i>
                                 </div>
                             </div>
                             <div class="col-7 d-flex align-items-center">
                                 <div class="numbers">
                                     <p class="card-category">SubTasks</p>
-                                    <h4 class="card-title">{{total_subtask}}</h4>
+                                    <h4 class="card-title font-weight-bold text-dark">{{ total_subtask }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -44,18 +52,18 @@
             </div>
 
             <div class="col-md-4">
-                <div class="card card-stats card-primary">
+                <div class="card shadow-sm border-0" style="background: #b2dfdb; color: #004d40;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="la la-check-circle"></i>
+                                <div class="icon-big text-center text-teal">
+                                    <i class="la la-sticky-note la-3x"></i>
                                 </div>
                             </div>
                             <div class="col-7 d-flex align-items-center">
                                 <div class="numbers">
                                     <p class="card-category">Notes</p>
-                                    <h4 class="card-title">{{total_note}}</h4>
+                                    <h4 class="card-title font-weight-bold text-dark">{{ total_note }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -64,17 +72,28 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- Nature Info Card -->
+        <div class="row mt-4">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">🌐 Hangarin</div>
-                        <div class="card-category">Task Manager</div>
-                        <p class="card-body">
-                            The To-Do-List App is a productivity tool designed to help users organize, track, and manage their daily tasks efficiently. 
-                            It allows users to create, update, and delete tasks, set deadlines, and monitor their progress in an easy and organized way. 
-                            With a simple and user-friendly interface, the app helps improve time management, boost productivity, 
-                            and ensure that important tasks are completed on time.
+                <div class="card border-0 shadow-sm" style="background: #f1f8e9;">
+                    <div class="card-header border-0" style="background: #5daf3d; color: white;">
+                        <h4 class="card-title mb-0"><i class="la la-leaf"></i> Welcome to Hangarin</h4>
+                        <div class="card-category text-light">Your Natural Flow of Productivity</div>
+                    </div>
+                    <div class="card-body" style="font-size: 15px; line-height: 1.8; color: #212121;">
+                        <p>
+                            Hangarin is a peaceful productivity space designed with a touch of nature —
+                            helping you manage your daily goals with clarity and calm focus. 
+                            Like tending a garden, each completed task helps your progress grow 🌱.
+                        </p>
+                        <ul>
+                            <li>🌼 <b>Organize</b> your day with simplicity and structure.</li>
+                            <li>🍂 <b>Track</b> your subtasks effortlessly and stay aligned.</li>
+                            <li>🌾 <b>Note</b> your thoughts and reminders to stay mindful.</li>
+                            <li>🍃 <b>Achieve</b> a healthy work-life balance with ease.</li>
+                        </ul>
+                        <p class="mt-3 text-success font-weight-bold">
+                            “Stay grounded, grow naturally, and bloom through every task.” 🌤️
                         </p>
                     </div>
                 </div>
