@@ -14,64 +14,124 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" />
 
   <style>
+    /* 🌿 Background with Gradient and Light Movement */
     body {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 50%, #81c784 100%);
       font-family: 'Poppins', sans-serif;
       color: #1b5e20;
+      overflow: hidden;
+      position: relative;
     }
 
+    /* Floating leaf animation */
+    .leaf {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(76, 175, 80, 0.15);
+      border-radius: 50%;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-40px) rotate(180deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(360deg);
+      }
+    }
+
+    /* 🌼 Main Card */
     .auth-card {
-      max-width: 600px;
       width: 100%;
-      background: #f5fbf5;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(60, 100, 60, 0.15);
-      padding: 2rem;
-      border: 1px solid #c8e6c9;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 600px;
+      background: #f9fff9;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0, 50, 0, 0.2);
+      padding: 2.5rem;
+      border: 1px solid rgba(129, 199, 132, 0.3);
+      backdrop-filter: blur(8px);
+      text-align: center;
+      z-index: 2;
+      transition: all 0.3s ease;
     }
 
     .auth-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(60, 100, 60, 0.25);
+      box-shadow: 0 15px 45px rgba(0, 100, 0, 0.25);
     }
 
+    /* 🌱 Tabs */
     .nav-pills .nav-link.active {
-      background-color: #43a047 !important;
-      color: white !important;
+      background-color: #2e7d32 !important;
+      color: #fff !important;
       font-weight: bold;
+      box-shadow: 0 3px 10px rgba(46, 125, 50, 0.3);
     }
 
     .nav-pills .nav-link {
       color: #2e7d32 !important;
-      border-radius: 10px;
+      border-radius: 12px;
+      font-weight: 500;
     }
 
+    /* 🌸 Input Fields */
     .form-outline input {
       border: 1px solid #81c784;
       color: #1b5e20;
+      background-color: #f9fff9;
     }
 
     .form-outline label {
-      color: #2e7d32;
+      color: #388e3c;
     }
 
+    /* 🌿 Buttons */
     .btn-primary {
       background-color: #2e7d32 !important;
-      border-color: #1b5e20 !important;
+      border: none;
+      border-radius: 30px;
+      padding: 10px;
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(46, 125, 50, 0.4);
     }
 
     .btn-primary:hover {
       background-color: #1b5e20 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(27, 94, 32, 0.5);
     }
 
+    .btn-outline-success {
+      color: #2e7d32 !important;
+      border-color: #81c784 !important;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-success:hover {
+      background-color: #c8e6c9 !important;
+      color: #1b5e20 !important;
+      transform: translateY(-2px);
+    }
+
+    /* 🌼 Links & Text */
     a {
-      color: #388e3c;
+      color: #2e7d32;
+      font-weight: 500;
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     a:hover {
@@ -87,29 +147,53 @@
       background-color: #ffcdd2;
       color: #b71c1c;
       border: 1px solid #ef9a9a;
+      border-radius: 10px;
+    }
+
+    /* 🌷 Subtext */
+    .subtext {
+      font-size: 0.9rem;
+      color: #4e6c50;
+      margin-top: 1.5rem;
+    }
+
+    /* Logo / Branding */
+    .logo {
+      font-size: 2.5rem;
+      color: #1b5e20;
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
 
 <body>
+  <!-- Floating leaves for subtle motion -->
+  <div class="leaf" style="top:10%; left:5%; animation-delay: 0s;"></div>
+  <div class="leaf" style="top:30%; left:90%; animation-delay: 2s;"></div>
+  <div class="leaf" style="top:60%; left:20%; animation-delay: 4s;"></div>
+  <div class="leaf" style="top:80%; left:70%; animation-delay: 6s;"></div>
+
   <div class="auth-card">
+    <div class="logo">🌿</div>
+    <h3 class="mb-4">Welcome to <strong>Hangarin</strong></h3>
+
     <!-- Navigation Tabs -->
-    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <ul class="nav nav-pills nav-justified mb-4" id="ex1" role="tablist">
       <li class="nav-item" role="presentation">
         <a class="nav-link active" id="tab-login" data-mdb-pill-init href="#pills-login" role="tab"
-          aria-controls="pillslogin" aria-selected="true">Login</a>
+          aria-controls="pills-login" aria-selected="true">Login</a>
       </li>
       <li class="nav-item" role="presentation">
         <a class="nav-link" id="tab-register" data-mdb-pill-init href="#pills-register" role="tab"
-          aria-controls="pillsregister" aria-selected="false">Register</a>
+          aria-controls="pills-register" aria-selected="false">Register</a>
       </li>
     </ul>
 
-    <!-- Tab Contents -->
+    <!-- Tab Content -->
     <div class="tab-content">
 
-      <!-- Login Tab -->
-      <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+      <!-- 🌿 Login Tab -->
+      <div class="tab-pane fade show active" id="pills-login" role="tabpanel">
         <form method="post" action="{% url 'account_login' %}">
           {% csrf_token %}
           <div class="text-center mb-3">
@@ -121,48 +205,41 @@
               <i class="fab fa-github"></i>
             </a>
           </div>
-          <p class="text-center">or:</p>
 
-          <!-- Username / Email -->
+          <p class="text-center">or use your credentials:</p>
+
           <div data-mdb-input-init class="form-outline mb-4">
             <input type="text" name="login" id="id_login" class="form-control" required />
             <label class="form-label" for="id_login">Email or Username</label>
           </div>
 
-          <!-- Password -->
           <div data-mdb-input-init class="form-outline mb-4">
             <input type="password" name="password" id="id_password" class="form-control" required />
             <label class="form-label" for="id_password">Password</label>
           </div>
 
-          <!-- Remember / Forgot -->
-          <div class="row mb-4">
-            <div class="col-md-6 d-flex justify-content-center">
-              <div class="form-check mb-3 mb-md-0">
-                <input class="form-check-input" type="checkbox" id="loginCheck" checked />
-                <label class="form-check-label" for="loginCheck"> Remember me </label>
-              </div>
+          <div class="d-flex justify-content-between mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="loginCheck" checked />
+              <label class="form-check-label" for="loginCheck">Remember me</label>
             </div>
-            <div class="col-md-6 d-flex justify-content-center">
-              <a href="{% url 'account_reset_password' %}">Forgot password?</a>
-            </div>
+            <a href="{% url 'account_reset_password' %}">Forgot password?</a>
           </div>
 
           {% if form.non_field_errors %}
-          <div class="alert alert-danger" role="alert">
+          <div class="alert alert-danger">
             {% for error in form.non_field_errors %}
-            <p{% if forloop.last %} class="mb-0" {% endif %}>{{ error }}</p>
-              {% endfor %}
+            <p>{{ error }}</p>
+            {% endfor %}
           </div>
           {% endif %}
 
-          <!-- Submit -->
-          <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+          <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
         </form>
       </div>
 
-      <!-- Register Tab -->
-      <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+      <!-- 🌸 Register Tab -->
+      <div class="tab-pane fade" id="pills-register" role="tabpanel">
         <form method="post" action="{% url 'account_signup' %}">
           {% csrf_token %}
           <div class="text-center mb-3">
@@ -174,37 +251,34 @@
               <i class="fab fa-github"></i>
             </a>
           </div>
-          <p class="text-center">or:</p>
 
-          <!-- Username -->
+          <p class="text-center">or create an account:</p>
+
           <div data-mdb-input-init class="form-outline mb-4">
             <input type="text" name="username" id="registerUsername" class="form-control" required />
             <label class="form-label" for="registerUsername">Username</label>
           </div>
 
-          <!-- Email -->
           <div data-mdb-input-init class="form-outline mb-4">
             <input type="email" name="email" id="registerEmail" class="form-control" required />
             <label class="form-label" for="registerEmail">Email</label>
           </div>
 
-          <!-- Password -->
           <div data-mdb-input-init class="form-outline mb-4">
             <input type="password" name="password1" id="registerPassword" class="form-control" required />
             <label class="form-label" for="registerPassword">Password</label>
           </div>
 
-          <!-- Confirm Password -->
           <div data-mdb-input-init class="form-outline mb-4">
             <input type="password" name="password2" id="registerRepeatPassword" class="form-control" required />
             <label class="form-label" for="registerRepeatPassword">Repeat password</label>
           </div>
 
-          <!-- Submit -->
           <button type="submit" class="btn btn-primary btn-block mb-3">Register</button>
         </form>
       </div>
     </div>
+    <p class="subtext">Hangarin — Stay Organized, Stay Grounded 🌱</p>
   </div>
 
   <!-- MDB JS -->

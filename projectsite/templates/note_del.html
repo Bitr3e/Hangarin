@@ -2,35 +2,36 @@
 {% load static %}
 
 {% block content %}
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Delete note</div>
-                        <div class="card-category">Are you sure?</div>
+<div class="content" style="background: linear-gradient(135deg, #e8f5e9, #f9fbe7); min-height: 100vh;">
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+        <div class="card shadow-lg border-0" style="background: #f1f8e9; border-radius: 20px; width: 500px;">
+            <div class="card-header text-center border-0" style="background: #81c784; border-top-left-radius: 20px; border-top-right-radius: 20px; color: white;">
+                <h4 class="card-title mb-1"><i class="la la-exclamation-triangle"></i> Delete Note</h4>
+                <p class="card-category text-light">Please confirm your action 🌿</p>
+            </div>
+
+            <div class="card-body text-center" style="color: #2e7d32; font-size: 16px;">
+                <p class="mt-2">Are you sure you want to delete 
+                    <strong class="text-danger">"{{ object }}"</strong>?
+                </p>
+
+                <form action="" method="post" class="mt-4">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="submit" class="btn" 
+                            style="background: #e57373; color: white; border-radius: 25px; padding: 10px 25px; font-weight: 600;">
+                            Yes, Delete
+                        </button>
+                        <a href="{% url 'note-list' %}" class="btn"
+                            style="background: #a5d6a7; color: #1b5e20; border-radius: 25px; padding: 10px 25px; font-weight: 600;">
+                            Cancel
+                        </a>
                     </div>
+                </form>
+            </div>
 
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <form action="" method="post">
-                                {% csrf_token %}
-                                <p>Are you sure you want to delete <strong>"{{ object }}"</strong>?</p>
-
-                                <div class="form-group mt-3">
-                                    <button type="submit" class="btn btn-danger btn-rounded">
-                                        Yes, Delete
-                                    </button>
-                                    <a href="{% url 'note-list' %}" class="btn btn-secondary btn-rounded">
-                                        Cancel
-                                    </a>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="card-footer text-center border-0" style="background: #c8e6c9; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                <small class="text-muted">Think before you uproot 🌱</small>
             </div>
         </div>
     </div>

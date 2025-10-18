@@ -3,40 +3,45 @@
 
 {% block content %}
 <div class="content" style="background: linear-gradient(135deg, #e8f5e9, #f1f8e9); min-height: 100vh;">
-  <div class="container-fluid">
-    <h3><i class="la la-list-alt mr-2"></i> Subtask</h3>
+  <div class="container-fluid py-4">
 
-    <br />
-    <div class="row mb-3 align-items-center">
-      <!-- Search -->
-      <div class="col-md-6">
+    <!-- Page Title -->
+    <h3 class="text-success mb-4 d-flex align-items-center" style="font-weight: 700;">
+      <i class="la la-list-alt mr-2"></i>SubTask
+    </h3>
+
+    <!-- Search and Add -->
+    <div class="row mb-4 align-items-center">
+      <!-- Search Bar -->
+      <div class="col-md-6 mb-2 mb-md-0">
         <form class="navbar-left navbar-form nav-search" action="{% url 'subtask-list' %}">
-          <div class="input-group shadow-sm rounded" style="border: 1px solid #a5d6a7;">
+          <div class="input-group shadow-sm rounded" style="border: 1px solid #a5d6a7; overflow: hidden;">
             <input
               type="text"
-              placeholder="Search ..."
+              placeholder="Search subtasks..."
               class="form-control"
               name="q"
-              style="background: #f9fbe7; color: #1b5e20;"
+              style="background: #f9fbe7; color: #1b5e20; border: none; font-weight: 500;"
             />
             <div class="input-group-append">
-              <span class="input-group-text bg-success text-white">
-                <i class="la la-search search-icon"></i>
-              </span>
+              <button class="btn btn-success" type="submit" style="background: #66bb6a; border: none;">
+                <i class="la la-search"></i>
+              </button>
             </div>
           </div>
         </form>
       </div>
 
-      <!-- Add Note Button -->
-      <div class="col-md-6 text-right">
-        <a href="{% url 'subtask-add' %}" class="btn btn-success btn-rounded shadow-sm">
-          ➕ Add Subtask
+      <!-- Add Button -->
+      <div class="col-md-6 text-md-right text-center">
+        <a href="{% url 'subtask-add' %}" class="btn shadow-sm"
+           style="background: #81c784; color: white; font-weight: 600; border-radius: 30px;">
+          <i class="la la-plus-circle mr-1"></i> Add SubTask
         </a>
       </div>
     </div>
 
-    <!-- Sort Form -->
+    <!-- Sort Section -->
     <div class="col-md-12 mb-4">
       <form method="get" class="row g-2 align-items-center">
         <div class="col-auto">
@@ -60,14 +65,12 @@
             </option>
           </select>
         </div>
-
         <div class="col-auto">
           <button
             type="submit"
-            class="btn btn-primary btn-sm btn-rounded shadow-sm"
-            style="background: #388e3c; border: none;"
-          >
-            Sort
+            class="btn btn-sm shadow-sm"
+            style="background: #388e3c; border: none; color: white; border-radius: 25px;">
+            <i class="la la-sort"></i> Sort
           </button>
         </div>
       </form>
@@ -77,9 +80,12 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card border-0 shadow-sm" style="background: #f1f8e9;">
-          <div class="card-header border-0" style="background: #5daf3d; color: white;">
-            <div class="card-title mb-0"><i class="la la-list-alt mr-2"></i> Subtask</div>
-            <div class="card-category text-light">Enter your Subtask here</div>
+          <div class="card-header border-0 d-flex justify-content-between align-items-center"
+               style="background: #5daf3d; color: white;">
+            <div>
+              <h5 class="card-title mb-0"><i class="la la-leaf mr-2"></i> SubTask List</h5>
+              <small class="card-category text-light">Manage your subtask easily 🌱</small>
+            </div>
           </div>
 
           <div class="card-body" style="color: #1b5e20;">
@@ -89,24 +95,30 @@
                   <th scope="col">Parent Task</th>
                   <th scope="col">Title</th>
                   <th scope="col">Status</th>
-                  <th scope="col">action</th>
+                  <th scope="col" class="text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {% for object in object_list %}
-                  <tr>
-                    <td>{{ object.title }}</td>
-                    <td>{{ object.title }}</td>
-                    <td>{{ object.status }}</td>
-                    <td>
-                    <a href="subtask_list/{{ object.id }}">Edit</a>
-                    <a href="subtask_list/{{ object.id }}/delete" class="text-danger">Delete</a>
-                </td>
-                  </tr>
+                <tr style="background: #f9fbe7;">
+                  <td class="font-weight-bold">{{ object.title }}</td>
+                  <td>{{ object.title }}</td>
+                  <td>{{ object.status }}</td>
+                  <td class="text-right">
+                    <a href="subtask_list/{{ object.id }}" class="btn btn-sm text-white"
+                       style="background: #66bb6a; border-radius: 20px; padding: 5px 15px;">
+                      <i class="la la-edit"></i> Edit
+                    </a>
+                    <a href="subtask_list/{{ object.id }}/delete" class="btn btn-sm text-white ml-2"
+                       style="background: #e57373; border-radius: 20px; padding: 5px 15px;">
+                      <i class="la la-trash"></i> Delete
+                    </a>
+                  </td>
+                </tr>
                 {% empty %}
                 <tr>
-                  <td colspan="5" class="text-center text-muted">
-                    No subtask found.
+                  <td colspan="5" class="text-center text-muted py-3">
+                    No subtask found 🌿
                   </td>
                 </tr>
                 {% endfor %}

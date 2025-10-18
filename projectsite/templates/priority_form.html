@@ -2,44 +2,48 @@
 {% load static %}
 
 {% block content %}
-<div class="content">
-  <div class="container-fluid">
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-
-          <div class="card-header">
-            <div class="card-title">
-              {% if object %}
-                Update Priority
-              {% else %}
-                Add New Priority
-              {% endif %}
-            </div>
-            <div class="card-category">Page Subtitle</div>
-          </div>
-
-          <div class="card-body col-md-6">
-            <form action="" method="post" novalidate>
-              {% csrf_token %}
-              {% include 'includes/form.html' %}
-
-              <div class="form-group mt-3">
-                <div class="col-md-12">
-                  <button type="submit" class="btn btn-primary btn-rounded">
-                    Submit
-                  </button>
-                  <a href="{% url 'priority-list' %}" class="btn btn-secondary btn-rounded ms-2">
-                    Cancel
-                  </a>
-                </div>
-              </div>
-            </form>
-          </div>
-
-        </div>
+<div class="content" style="background: linear-gradient(135deg, #e8f5e9, #f9fbe7); min-height: 100vh;">
+  <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card shadow-lg border-0" style="background: #f1f8e9; border-radius: 20px; width: 600px;">
+      
+      <!-- Header -->
+      <div class="card-header text-center border-0" 
+           style="background: #66bb6a; color: white; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+        <h4 class="card-title mb-1">
+          {% if object %}
+            <i class="la la-pencil"></i> Update Priority
+          {% else %}
+            <i class="la la-plus-circle"></i> Add New Priority
+          {% endif %}
+        </h4>
+        <p class="card-category text-light">Organize your priority with ease 🌿</p>
       </div>
+
+      <!-- Body -->
+      <div class="card-body" style="color: #2e7d32;">
+        <form action="" method="post" novalidate>
+          {% csrf_token %}
+          {% include 'includes/form.html' %}
+
+          <div class="form-group mt-4 text-center">
+            <button type="submit" class="btn"
+                    style="background: #81c784; color: white; border-radius: 25px; padding: 10px 25px; font-weight: 600;">
+              🌱 Submit
+            </button>
+            <a href="{% url 'priority-list' %}" class="btn ms-2"
+               style="background: #c8e6c9; color: #1b5e20; border-radius: 25px; padding: 10px 25px; font-weight: 600;">
+              Cancel
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="card-footer text-center border-0" 
+           style="background: #dcedc8; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+        <small class="text-muted">Nurture your workflow, one priority at a time 🍃</small>
+      </div>
+
     </div>
   </div>
 </div>

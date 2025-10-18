@@ -1,70 +1,63 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="content" style="background: linear-gradient(135deg, #e8f5e9, #f9fbe7); min-height: 100vh;">
-    <div class="container-fluid">
+<div class="content" style="background: linear-gradient(135deg, #f1f8e9, #e8f5e9); min-height: 100vh; font-family: 'Poppins', sans-serif;">
+    <div class="container-fluid py-4">
+
+        <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="page-title text-success font-weight-bold">
+            <h4 class="page-title text-success font-weight-bold" style="font-size: 1.8rem;">
                 🌿 Home Dashboard
             </h4>
         </div>
 
         <!-- Stats Row -->
         <div class="row">
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0" style="background: #dcedc8; color: #2e7d32;">
+            <!-- Tasks Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm" style="background: linear-gradient(145deg, #dcedc8, #c8e6c9); border-radius: 12px; transition: transform 0.3s;">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center text-success">
-                                    <i class="la la-check-square la-3x"></i>
-                                </div>
+                        <div class="row align-items-center">
+                            <div class="col-5 text-center">
+                                <i class="la la-check-square la-3x text-success"></i>
                             </div>
-                            <div class="col-7 d-flex align-items-center">
-                                <div class="numbers">
-                                    <p class="card-category">Tasks</p>
-                                    <h4 class="card-title font-weight-bold text-dark">{{ total_task }}</h4>
-                                </div>
+                            <div class="col-7">
+                                <p class="card-category mb-1 text-muted">Tasks</p>
+                                <h4 class="card-title mb-0 font-weight-bold text-dark">{{ total_task }}</h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0" style="background: #fff9c4; color: #33691e;">
+            <!-- Subtasks Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm" style="background: linear-gradient(145deg, #fff9c4, #fff59d); border-radius: 12px; transition: transform 0.3s;">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center text-warning">
-                                    <i class="la la-list-alt la-3x"></i>
-                                </div>
+                        <div class="row align-items-center">
+                            <div class="col-5 text-center">
+                                <i class="la la-list-alt la-3x text-warning"></i>
                             </div>
-                            <div class="col-7 d-flex align-items-center">
-                                <div class="numbers">
-                                    <p class="card-category">SubTasks</p>
-                                    <h4 class="card-title font-weight-bold text-dark">{{ total_subtask }}</h4>
-                                </div>
+                            <div class="col-7">
+                                <p class="card-category mb-1 text-muted">Subtasks</p>
+                                <h4 class="card-title mb-0 font-weight-bold text-dark">{{ total_subtask }}</h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card shadow-sm border-0" style="background: #b2dfdb; color: #004d40;">
+            <!-- Notes Card -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm" style="background: linear-gradient(145deg, #b2dfdb, #a7ffeb); border-radius: 12px; transition: transform 0.3s;">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center text-teal">
-                                    <i class="la la-sticky-note la-3x"></i>
-                                </div>
+                        <div class="row align-items-center">
+                            <div class="col-5 text-center">
+                                <i class="la la-sticky-note la-3x text-info"></i>
                             </div>
-                            <div class="col-7 d-flex align-items-center">
-                                <div class="numbers">
-                                    <p class="card-category">Notes</p>
-                                    <h4 class="card-title font-weight-bold text-dark">{{ total_note }}</h4>
-                                </div>
+                            <div class="col-7">
+                                <p class="card-category mb-1 text-muted">Notes</p>
+                                <h4 class="card-title mb-0 font-weight-bold text-dark">{{ total_note }}</h4>
                             </div>
                         </div>
                     </div>
@@ -73,32 +66,50 @@
         </div>
 
         <!-- Nature Info Card -->
-        <div class="row mt-4">
+        <div class="row mt-3">
             <div class="col-md-12">
-                <div class="card border-0 shadow-sm" style="background: #f1f8e9;">
-                    <div class="card-header border-0" style="background: #5daf3d; color: white;">
+                <div class="card border-0 shadow-sm" style="background: #ffffff; border-radius: 16px;">
+                    <div class="card-header border-0 text-white" style="background: linear-gradient(90deg, #2e7d32, #66bb6a); border-top-left-radius: 16px; border-top-right-radius: 16px;">
                         <h4 class="card-title mb-0"><i class="la la-leaf"></i> Welcome to Hangarin</h4>
                         <div class="card-category text-light">Your Natural Flow of Productivity</div>
                     </div>
-                    <div class="card-body" style="font-size: 15px; line-height: 1.8; color: #212121;">
+                    <div class="card-body" style="font-size: 15px; line-height: 1.8; color: #2e2e2e;">
                         <p>
                             Hangarin is a peaceful productivity space designed with a touch of nature —
-                            helping you manage your daily goals with clarity and calm focus. 
+                            helping you manage your daily goals with clarity and calm focus.
                             Like tending a garden, each completed task helps your progress grow 🌱.
                         </p>
-                        <ul>
+                        <ul style="list-style: none; padding-left: 0;">
                             <li>🌼 <b>Organize</b> your day with simplicity and structure.</li>
                             <li>🍂 <b>Track</b> your subtasks effortlessly and stay aligned.</li>
                             <li>🌾 <b>Note</b> your thoughts and reminders to stay mindful.</li>
                             <li>🍃 <b>Achieve</b> a healthy work-life balance with ease.</li>
                         </ul>
-                        <p class="mt-3 text-success font-weight-bold">
+                        <p class="mt-3 text-success font-weight-bold text-center">
                             “Stay grounded, grow naturally, and bloom through every task.” 🌤️
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
+
+<!-- Hover Animation -->
+<style>
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .card-category {
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+    }
+</style>
 {% endblock %}
