@@ -101,11 +101,11 @@ PWA_APP_ICONS = [
 ] 
 PWA_APP_ICONS_APPLE = [ 
     { 
-        'src': '/static/img/logo.png.png', 
+        'src': '/static/img/logo.png', 
         'sizes': '1024x1024',
     }, 
     { 
-        'src': '/static/img/logo.png.png', 
+        'src': '/static/img/logo.png', 
         'sizes': '1024x1024',
     } 
 ] 
